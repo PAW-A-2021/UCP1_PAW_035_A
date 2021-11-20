@@ -1,0 +1,71 @@
+﻿@model IEnumerable<TokoLaundry.Models.Transaksi>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Data Transaksi</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCustomer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tanggal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Catatan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalTransaksi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdAdmin1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdAdminNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdBarangNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCustomer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tanggal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Catatan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalTransaksi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdAdmin1.IdBarang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdAdminNavigation.IdAdmin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdBarangNavigation.IdCustomer)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdTransaksi"><i class="fa fa-marker fa-lg"></i></a> |
+                <a asp-action="Details" asp-route-id="@item.IdTransaksi"><i class="fas fa-list"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.IdTransaksi"><i class="fa fa-trash-alt fa-lg"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
